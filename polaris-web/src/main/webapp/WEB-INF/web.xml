@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee  http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+    <!--默认的拦截器在web.xml 中 配置，下面是把这个拦截功能交给spring的代码
+    spring 中如果你没有指定用哪个配置文件去作为spring拦截的配置文件 会自动寻找文件名为
+    xxxx-servlet.xml 的配置文件-->
+    <servlet>
+        <servlet-name>springweb</servlet-name>
+        <servlet-class>
+            org.springframework.web.servlet.DispatcherServlet
+        </servlet-class>
+        <!-- 下面的代码是指定默认的配置文件 否则会默认寻找名为xxxx-servlet.xml 的配置文件
+        <init-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/springweb.xml</param-value>
+        <init-param>
+        -->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>springweb</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <!--下面代码中<listener> 就是初始化的作用-->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <!--初始化文件的位置 具体怎么加载的spring已经为我们写好了  我们所可以改的就是
+    <param-value>classpath:Resource/SpringConf.xml</param-value>
+    还句话说 配置此处的目的就是告诉spring要加载的配置文件的路径
+    -->
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:/spring/spring-*.xml</param-value>
+    </context-param>
+    <!-- 自定义编码拦截器 也是spring为我们写好的 -->
+    <filter>
+        <filter-name>setcharacter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>utf-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>setcharacter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <!--静态资源允许访问-->
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.css</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.gif</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.png</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.js</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.html</url-pattern>
+    </servlet-mapping>
+</web-app>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>polaris</artifactId>
+        <groupId>com.polaris</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>polaris-web</artifactId>
+    <packaging>war</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.polaris</groupId>
+            <artifactId>polaris-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <url>http://wdsp.tao21.org</url>
+                    <port>8021</port>
+                    <path>/</path>
+                    <uriEncoding>utf-8</uriEncoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>7</source>
+                    <target>7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <configPath>src/main/resources/config/dev</configPath>
+            </properties>
+            <build>
+                <finalName>polaris-web</finalName>
+                <filters>
+                    <filter>src/main/resources/profile/dev.properties</filter>
+                </filters>
+            </build>
+        </profile>
+
+        <profile>
+            <id>test</id>
+            <properties>
+                <configPath>src/main/resources/config/test</configPath>
+            </properties>
+            <build>
+                <finalName>polaris-web</finalName>
+                <filters>
+                    <filter>src/main/resources/profile/test.properties</filter>
+                </filters>
+            </build>
+        </profile>
+
+
+        <profile>
+            <id>production</id>
+            <properties>
+                <configPath>src/main/resources/config/production</configPath>
+            </properties>
+            <build>
+                <finalName>polaris-web</finalName>
+                <filters>
+                    <filter>src/main/resources/profile/production.properties</filter>
+                </filters>
+            </build>
+        </profile>
+    </profiles>
+
+</project>

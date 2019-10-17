@@ -1,0 +1,160 @@
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"
+       default-autowire="byName">
+
+    <mvc:default-servlet-handler/>
+    <context:component-scan
+            base-package="com"/>
+    <aop:aspectj-autoproxy/>
+    <context:annotation-config/>
+
+    <mvc:annotation-driven>
+        <mvc:message-converters register-defaults="false">
+            <!-- StringHttpMessageConverter编码为UTF-8，防止乱码-->
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <constructor-arg value="UTF-8"/>
+                <property name="supportedMediaTypes">
+                    <list>
+                        <bean class="org.springframework.http.MediaType">
+                            <constructor-arg index="0" value="text"/>
+                            <constructor-arg index="1" value="plain"/>
+                            <constructor-arg index="2" value="UTF-8"
+                                             type="java.nio.charset.Charset"/>
+                        </bean>
+                        <bean class="org.springframework.http.MediaType">
+                            <constructor-arg index="0" value="*"/>
+                            <constructor-arg index="1" value="*"/>
+                            <constructor-arg index="2" value="UTF-8"
+                                             type="java.nio.charset.Charset"/>
+                        </bean>
+                    </list>
+                </property>
+            </bean>
+
+            <!--
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>application/json;charset=UTF-8</value>
+                        <value>text/html;charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>-->
+
+            <!-- 避免IE执行AJAX时,返回JSON出现下载文件 class="com.raycloud.discount.pompeii.web.support.FastJsonHttpMessageConverterEx"-->
+            <bean id="fastJsonHttpMessageConverter"
+                  class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>application/json;charset=UTF-8</value>
+                        <value>text/html;charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>
+
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <!-- 内容协商管理器 偶尔会出现406,所以暂时不配置 -->
+    <!--1、首先检查路径扩展名（如my.pdf）；2、其次检查Parameter（如my?format=pdf）；3、检查Accept Header-->
+    <bean id="contentNegotiationManager"
+          class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+        <!-- 扩展名至mimeType的映射,即 /user.json => application/json -->
+        <property name="favorPathExtension" value="true"/>
+        <!-- 用于开启 /userinfo/123?format=json 的支持 -->
+        <property name="favorParameter" value="true"/>
+        <property name="parameterName" value="format"/>
+        <!-- 是否忽略Accept Header -->
+        <property name="ignoreAcceptHeader" value="false"/>
+
+        <property
+                name="mediaTypes"> <!--扩展名到MIME的映射；favorPathExtension, favorParameter是true时起作用  -->
+            <value>
+                json=application/json
+                xml=application/xml
+                html=text/html
+                xsl=application/vnd.ms-excel
+            </value>
+        </property>
+        <!-- 默认的content type -->
+        <property name="defaultContentType" value="text/html"/>
+    </bean>
+
+    <!-- ========================= VIEW定义 ========================= -->
+    <!-- 内容协商视图解析器；根据客户端的不同的请求决定不同的 view进行响应, 如 /blog/1.json /blog/1.xml -->
+    <!-- 会自动根据解析的contentType来决定使用哪个视图解析器（默认使用整个web应用中的viewResolver） -->
+    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+        <!-- 内容协商管理器 用于决定media type -->
+        <property name="contentNegotiationManager"
+                  ref="contentNegotiationManager"/>
+        <!-- 默认视图 放在解析链最后 -->
+        <property name="defaultViews">
+            <list>
+                <bean class="com.alibaba.fastjson.support.spring.FastJsonJsonView"/>
+            </list>
+        </property>
+    </bean>
+
+    <!-- 默认的视图解析器 在上边的解析错误时使用 (默认使用html)- -->
+    <bean id="defaultViewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- one of the properties available; the maximum file size in bytes -->
+        <property name="maxUploadSize" value="10000000"/>
+    </bean>
+
+
+    <!-- 资源重定向(仅作为后台使用不提供静态资源) -->
+    <!--<mvc:resources mapping="swagger-ui.html" location="classpath:/META-INF/resources/"/>-->
+    <!--<mvc:resources mapping="webjars/**" location="classpath:/META-INF/resources/webjars/"/>-->
+
+
+    <!--<mvc:interceptors>-->
+    <!--<mvc:interceptor>-->
+    <!--<mvc:mapping path="/title/*"/>-->
+    <!--<mvc:mapping path="/keywords/*"/>-->
+    <!--<mvc:mapping path="/optimise/*"/>-->
+    <!--<mvc:mapping path="/page/*"/>-->
+    <!--<mvc:exclude-mapping path="/title/checked/list"/>-->
+    <!--<mvc:exclude-mapping path="/title/lastResult"/>-->
+    <!--<mvc:exclude-mapping path="/title/progress"/>-->
+    <!--<mvc:exclude-mapping path="/title/optimise/log"/>-->
+    <!--<mvc:exclude-mapping path="/keywords/groups/get"/>-->
+    <!--<bean class="com.raycloud.optimise.web.interceptors.UserOperateInterceptor"/>-->
+    <!--</mvc:interceptor>-->
+    <!--</mvc:interceptors>-->
+
+    <!-- 自定义拦截链配置
+
+
+    <bean id="MySimpleMappingExceptionResolver" class="com.raycloud.promotion.coupon.web.interceptor.ExceptionInterceptor">
+        <property name="defaultErrorView">
+            <value>/common/error.jsp</value>
+        </property>
+        <property name="exceptionMappings">
+            <props>
+                <prop key="java.lang.Exception">/common/error.jsp</prop>
+            </props>
+        </property>
+    </bean>-->
+
+</beans>
+
+
+
+
+
+
+
