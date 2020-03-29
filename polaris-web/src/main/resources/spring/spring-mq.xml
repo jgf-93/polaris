@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+    <bean id="myProducer" class="com.polaris.common.mq.MqProducer"
+          init-method="init"
+          destroy-method="destroy"
+          scope="singleton">
+        <property name="producerGroup" value="MyProducerGroup"/>
+        <property name="nameServer" value="127.0.0.1:9876"/>
+    </bean>
+    <bean id="myConsumer" class="com.polaris.common.mq.MqConsumer"
+          init-method="init"
+          destroy-method="destroy"
+          scope="singleton">
+        <property name="consumerGroup" value="MyConsumerGroup"/>
+        <property name="namesrvAddr" value="127.0.0.1:9876"/>
+    </bean>
+</beans>
