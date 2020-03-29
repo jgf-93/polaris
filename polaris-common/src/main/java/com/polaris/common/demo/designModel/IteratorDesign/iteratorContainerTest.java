@@ -41,14 +41,14 @@ public class iteratorContainerTest {
         nameList.add("李四");
         nameList.add("王五");
         CollectionIteratorContainer ci = new CollectionIteratorContainer();
-        for (Iterator it = ci.getIterator(nameList); it.hasNext(); ) {
+        for (Iterator it = (Iterator) ci.getIterator(nameList); it.hasNext(); ) {
             System.out.println((String) it.next());
         }
         Set<String> nameSet = new HashSet<>();
         nameSet.add("张三");
         nameSet.add("李四");
         nameSet.add("王五");
-        for (Iterator it = ci.getIterator(nameSet); it.hasNext(); ) {
+        for (Iterator it = (Iterator) ci.getIterator(nameSet); it.hasNext(); ) {
             System.out.println((String) it.next());
         }
     }
