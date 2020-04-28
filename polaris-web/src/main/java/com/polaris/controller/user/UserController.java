@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
@@ -24,8 +23,8 @@ public class UserController extends BaseController {
 
     @RequestMapping("login")
     @ResponseBody
-    public BaseResponse Login(HttpServletRequest request, HttpServletResponse response, UserRequest userRequest) {
-        userService.login(request, response, userRequest);
+    public BaseResponse Login(HttpServletResponse response, UserRequest userRequest) {
+        userService.login(response, userRequest);
         return BaseResponse.buildSuccessResponse("");
     }
 }
