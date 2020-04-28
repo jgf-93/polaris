@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.concurrent.TimeUnit;
 @Service
-public class RedisListServiceImpl<K, V> extends AbstractRedisService<K, V> {
+public class RedisListServiceImpl<K, V> extends AbstractRedisService {
     public void leftPop(K k) {
         redisTemplate.opsForList().leftPop(k);
     }
@@ -24,5 +24,4 @@ public class RedisListServiceImpl<K, V> extends AbstractRedisService<K, V> {
     public void remove(K k, Long count, V v) {
         redisTemplate.opsForList().remove(k, count, v);
     }
-    //todo   可以封装一些需要使用到的方法
 }

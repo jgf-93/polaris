@@ -34,7 +34,7 @@ public class StreamDemo2 {
         //四次方处理
         //list.stream().map(square.andThen(square).andThen(square)).forEach(e -> System.out.println(e));
         //减一再平方
-        //list.stream().map(square.compose(e -> e - 1)).forEach(e -> System.out.println(e));
+        list.stream().map(square.compose(e -> e - 1)).forEach(e -> System.out.println(e));
         //Stream.of(2, 4, 5, 6, 7, 1).reduce(BinaryOperator.maxBy(Comparator.comparing(Integer::intValue))).ifPresent(System.out::println);
         //IntBinaryOperator intBinaryOperator = (e1, e2) -> (e1 + e2);
         //IntStream.of(2, 4, 5, 6, 7, 1).reduce(intBinaryOperator).ifPresent(System.out::println);
@@ -43,7 +43,7 @@ public class StreamDemo2 {
         //IntStream.of(200,177,2,-22,-31,-33).filter(e->e>0).limit(2).forEach(e->System.out.println(e));
 
         //一直产生2
-        Stream.generate(() -> 2).limit(10).forEach(e -> System.out.println(e));
+        //Stream.generate(() -> 2).limit(10).forEach(e -> System.out.println(e));
     }
 
 }

@@ -1,4 +1,4 @@
-package com.polaris.controller.service;
+package com.polaris.service;
 
 import com.alibaba.rocketmq.client.producer.SendResult;
 import com.alibaba.rocketmq.client.producer.SendStatus;

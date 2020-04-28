@@ -1,4 +1,4 @@
-package com.polaris.controller.service;
+package com.polaris.service;
 
 import com.alibaba.fastjson.JSON;
 import com.polaris.common.redis.RedisListServiceImpl;
