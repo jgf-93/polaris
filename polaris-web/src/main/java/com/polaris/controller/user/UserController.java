@@ -31,6 +31,6 @@ public class UserController extends BaseController {
     @RequestMapping("register")
     @ResponseBody
     public BaseResponse register(UserRequest userRequest) {
-        return userService.register(getRequest(), userRequest);
+        return userService.register(userRequest);
     }
 }

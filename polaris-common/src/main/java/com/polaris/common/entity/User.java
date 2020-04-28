@@ -2,6 +2,7 @@ package com.polaris.common.entity;
 
 import lombok.Data;
 
+import java.util.Date;
 import java.util.Objects;
 
 @Data
@@ -30,4 +31,8 @@ public class User extends BaseEntity {
      * qq号
      */
     private String qq;
+    /**
+     * 登陆时间
+     */
+    private Date loginTime;
 }

@@ -54,7 +54,7 @@ public class UserService {
         response.addCookie(cookie);
     }
 
-    public BaseResponse register(HttpServletRequest request, UserRequest userRequest) {
+    public BaseResponse register(UserRequest userRequest) {
         Map<String, Object> map = new HashMap<>();
         map.put("userName", userRequest.getUserName());
         User user = userMapper.queryUser(map);
