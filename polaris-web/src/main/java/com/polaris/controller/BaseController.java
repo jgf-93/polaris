@@ -29,21 +29,21 @@ public abstract class BaseController {
         return user;
     }
 
-    HttpServletRequest getRequest() {
+    protected HttpServletRequest getRequest() {
         return requestThreadLocal.get();
     }
 
     @ModelAttribute
-    void setRequestThreadLocal(HttpServletRequest httpServletRequest) {
+    protected void setRequestThreadLocal(HttpServletRequest httpServletRequest) {
         requestThreadLocal.set(httpServletRequest);
     }
 
-    HttpServletResponse getResponse() {
+    protected HttpServletResponse getResponse() {
         return responeThreadLocal.get();
     }
 
     @ModelAttribute
-    void setResponeThreadLocal(HttpServletResponse response) {
+    protected void setResponeThreadLocal(HttpServletResponse response) {
         responeThreadLocal.set(response);
     }
 }

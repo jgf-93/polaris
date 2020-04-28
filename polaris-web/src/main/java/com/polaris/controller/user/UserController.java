@@ -23,8 +23,8 @@ public class UserController extends BaseController {
 
     @RequestMapping("login")
     @ResponseBody
-    public BaseResponse Login(HttpServletResponse response, UserRequest userRequest) {
-        userService.login(response, userRequest);
+    public BaseResponse Login(UserRequest userRequest) {
+        userService.login(getResponse(), userRequest);
         return BaseResponse.buildSuccessResponse("");
     }
 }

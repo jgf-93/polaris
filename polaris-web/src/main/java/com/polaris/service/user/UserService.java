@@ -16,6 +16,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class UserService {
@@ -31,7 +33,10 @@ public class UserService {
     public void login(HttpServletResponse response, UserRequest userRequest) {
         Assert.notNull(userRequest.getUserName(), "用户账号不能为空!");
         Assert.hasLength(userRequest.getPassword(), "用户密码不能为空!");
-        User user = userMapper.queryUser(userRequest.getUserName(), userRequest.getPassword());
+        Map<String, Object> map = new HashMap<>();
+        map.put("userName", userRequest.getUserName());
+        map.put("password", userRequest.getPassword());
+        User user = userMapper.queryUser(map);
         if (user == null) {
             Assert.notNull(user, "当前用户不存在!");
         }

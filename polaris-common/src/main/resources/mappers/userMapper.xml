@@ -11,7 +11,7 @@
         <result property="qq" column="qq"/>
     </resultMap>
 
-    <select id="queryUser" resultType="User">
-        select *from user where user_name=#{userName}# and pass_word=#{password}# limit 1
+    <select id="queryUser" parameterType="map" resultType="User">
+        select *from user where user_name=#{userName} and pass_word=#{password} limit 1
     </select>
 </mapper>
