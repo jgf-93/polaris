@@ -4,7 +4,7 @@ import com.polaris.common.entity.User;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserMapper {
+public interface UserMapper extends BaseMapper<User> {
 
     User queryUser(String userName, String password);
 }
