@@ -1,4 +1,4 @@
-package com.polaris.common.Constants;
+package com.polaris.common.constants;
 
 public class SystemConstant {
 

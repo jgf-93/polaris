@@ -1,6 +1,6 @@
 package com.polaris.interceptors;
 
-import com.polaris.common.Constants.RedisConstant;
+import com.polaris.common.constants.RedisConstant;
 import com.polaris.common.entity.User;
 import com.polaris.common.exception.ServiceException;
 import com.polaris.common.exception.UserExpireException;

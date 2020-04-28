@@ -1,7 +1,7 @@
 package com.polaris.interceptors;
 
 import com.alibaba.fastjson.JSON;
-import com.polaris.common.Constants.SystemConstant;
+import com.polaris.common.constants.SystemConstant;
 import com.polaris.common.exception.ParameterException;
 import com.polaris.common.exception.ServiceException;
 import com.polaris.common.exception.UserExpireException;
@@ -13,18 +13,20 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.ws.Service;
 
 public class ExceptionInterceptor implements HandlerExceptionResolver {
     private Logger logger = Logger.getLogger(ExceptionHandler.class);
 
     @Override
     public ModelAndView resolveException(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) {
+        //此处打印日志  用于排查问题
+        logger.error(e);
         BaseResponse baseResponse = new BaseResponse();
         if (e instanceof ServiceException) {
             baseResponse.setMessage("业务异常:" + e.getMessage());
             baseResponse.setCode(SystemConstant.SERVICE_ERROR_CODE);
-        } else if (e instanceof ParameterException) {
+        } else if (e instanceof ParameterException
+                || e instanceof IllegalArgumentException) {
             baseResponse.setMessage("参数异常:" + e.getMessage());
             baseResponse.setCode(SystemConstant.PARAMETER_ERROR_CODE);
         } else if (e instanceof UserExpireException) {

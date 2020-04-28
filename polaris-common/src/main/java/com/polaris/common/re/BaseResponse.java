@@ -20,10 +20,10 @@ public class BaseResponse<T> implements Serializable {
         return baseResponse;
     }
 
-    public static <V> BaseResponse buildSuccessResponse(V data) {
+    public static <V> BaseResponse buildSuccessResponse(String message, V data) {
         BaseResponse baseResponse = new BaseResponse<>();
         baseResponse.setCode(200);
-        baseResponse.setMessage("");
+        baseResponse.setMessage(message);
         baseResponse.setData(data);
         return baseResponse;
     }

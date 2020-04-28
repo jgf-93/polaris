@@ -25,6 +25,12 @@ public class UserController extends BaseController {
     @ResponseBody
     public BaseResponse Login(UserRequest userRequest) {
         userService.login(getResponse(), userRequest);
-        return BaseResponse.buildSuccessResponse("");
+        return BaseResponse.buildSuccessResponse("", "");
+    }
+
+    @RequestMapping("register")
+    @ResponseBody
+    public BaseResponse register(UserRequest userRequest) {
+        return userService.register(getRequest(), userRequest);
     }
 }

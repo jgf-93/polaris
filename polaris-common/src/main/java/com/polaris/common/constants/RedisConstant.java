@@ -1,4 +1,4 @@
-package com.polaris.common.Constants;
+package com.polaris.common.constants;
 
 public class RedisConstant {
     public static final String REDIS_USER_KEY = "polaris_id_index";

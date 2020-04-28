@@ -1,6 +1,6 @@
 package com.polaris.controller;
 
-import com.polaris.common.Constants.RedisConstant;
+import com.polaris.common.constants.RedisConstant;
 import com.polaris.common.entity.User;
 import com.polaris.common.exception.UserExpireException;
 import com.polaris.common.redis.RedisValueServiceImpl;
