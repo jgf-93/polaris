@@ -124,41 +124,6 @@
         <property name="maxUploadSize" value="10000000"/>
     </bean>
 
-
-    <!-- 资源重定向(仅作为后台使用不提供静态资源) -->
-    <!--<mvc:resources mapping="swagger-ui.html" location="classpath:/META-INF/resources/"/>-->
-    <!--<mvc:resources mapping="webjars/**" location="classpath:/META-INF/resources/webjars/"/>-->
-
-
-    <!--<mvc:interceptors>-->
-    <!--<mvc:interceptor>-->
-    <!--<mvc:mapping path="/title/*"/>-->
-    <!--<mvc:mapping path="/keywords/*"/>-->
-    <!--<mvc:mapping path="/optimise/*"/>-->
-    <!--<mvc:mapping path="/page/*"/>-->
-    <!--<mvc:exclude-mapping path="/title/checked/list"/>-->
-    <!--<mvc:exclude-mapping path="/title/lastResult"/>-->
-    <!--<mvc:exclude-mapping path="/title/progress"/>-->
-    <!--<mvc:exclude-mapping path="/title/optimise/log"/>-->
-    <!--<mvc:exclude-mapping path="/keywords/groups/get"/>-->
-    <!--<bean class="com.raycloud.optimise.web.interceptors.UserOperateInterceptor"/>-->
-    <!--</mvc:interceptor>-->
-    <!--</mvc:interceptors>-->
-
-    <!-- 自定义拦截链配置
-
-
-    <bean id="MySimpleMappingExceptionResolver" class="com.raycloud.promotion.coupon.web.interceptor.ExceptionInterceptor">
-        <property name="defaultErrorView">
-            <value>/common/error.jsp</value>
-        </property>
-        <property name="exceptionMappings">
-            <props>
-                <prop key="java.lang.Exception">/common/error.jsp</prop>
-            </props>
-        </property>
-    </bean>-->
-
 </beans>
 
 

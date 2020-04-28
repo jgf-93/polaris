@@ -50,15 +50,15 @@ public class RedisTestService {
      */
     @Test
     public void RedisTest() {
-        RedisUser redisUser = new RedisUser("1369", "张三", 18);
+/*        RedisUser redisUser = new RedisUser("1369", "张三", 18);
         redisValueService.set(redisUser.getIdCard(), redisUser, 300l, TimeUnit.SECONDS);//缓存30秒
         RedisUser getRedisUser = (RedisUser) redisValueService.get(redisUser.getIdCard());
         System.out.println("从redis中去除的缓存用户对象打印:" + JSON.toJSONString(getRedisUser));
         List<RedisUser> redisUserList = new ArrayList();
         redisUserList.add(redisUser);
         redisUserList.add(redisUser);
-        redisListService.set("redisList", redisUserList);
-        System.out.println("从redis中去除的缓存用户对象打印:" + JSON.toJSONString(redisListService.get("redisList")));
+        redisListService.add("redisList", redisUserList);
+        System.out.println("从redis中去除的缓存用户对象打印:" + JSON.toJSONString(redisListService.get("redisList")));*/
     }
 
     /**
