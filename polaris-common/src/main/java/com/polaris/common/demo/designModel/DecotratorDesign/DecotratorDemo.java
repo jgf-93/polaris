@@ -15,13 +15,13 @@ package com.polaris.common.demo.designModel.DecotratorDesign;
  */
 public class DecotratorDemo {
     public static void main(String[] args) {
-        Shape shape = new Rectangle();
+        DecotratorShape shape = new DecotratorRectangle();
         shape.draw();
 
-        Shape redShape = new RedDecotrator(new Rectangle());
+        DecotratorShape redShape = new RedDecotrator(new DecotratorRectangle());
         redShape.draw();
 
-        redShape = new RedDecotrator(new Circle());
+        redShape = new RedDecotrator(new DecotratorCircle());
         redShape.draw();
     }
 }

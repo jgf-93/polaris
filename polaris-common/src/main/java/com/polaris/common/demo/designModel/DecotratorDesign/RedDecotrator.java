@@ -1,8 +1,8 @@
 package com.polaris.common.demo.designModel.DecotratorDesign;
 
 public class RedDecotrator extends ShapeDecotrator {
-    RedDecotrator(Shape shape) {
-        super(shape);
+    RedDecotrator(DecotratorShape decotratorShape) {
+        super(decotratorShape);
     }
 
     public void draw() {

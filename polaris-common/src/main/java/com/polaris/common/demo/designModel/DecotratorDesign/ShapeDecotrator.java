@@ -1,13 +1,13 @@
 package com.polaris.common.demo.designModel.DecotratorDesign;
 
-public abstract class ShapeDecotrator implements Shape {
-    protected Shape shape;
+public abstract class ShapeDecotrator implements DecotratorShape {
+    protected DecotratorShape decotratorShape;
 
-    ShapeDecotrator(Shape shape) {
-        this.shape = shape;
+    ShapeDecotrator(DecotratorShape decotratorShape) {
+        this.decotratorShape = decotratorShape;
     }
 
     public void draw() {
-        shape.draw();
+        decotratorShape.draw();
     }
 }
