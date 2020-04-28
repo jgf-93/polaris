@@ -28,7 +28,7 @@ public class UserService {
     /**
      * @param userRequest
      */
-    public void login(HttpServletRequest request, HttpServletResponse response, UserRequest userRequest) {
+    public void login(HttpServletResponse response, UserRequest userRequest) {
         Assert.notNull(userRequest.getUserName(), "用户账号不能为空!");
         Assert.hasLength(userRequest.getPassword(), "用户密码不能为空!");
         User user = userMapper.queryUser(userRequest.getUserName(), userRequest.getPassword());

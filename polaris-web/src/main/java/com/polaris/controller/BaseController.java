@@ -22,7 +22,7 @@ public abstract class BaseController {
 
     protected User getUser() {
         HttpServletRequest request = requestThreadLocal.get();
-        User user = redisValueService.get(Base64Tool.encrypt(request.getHeader(RedisConstant.REDIS_USER_KEY)));
+        User user = redisValueService.get(Base64Tool.decrypt(request.getHeader(RedisConstant.REDIS_USER_KEY)));
         if (user == null) {
             throw new UserExpireException("用户信息不存在!");
         }
