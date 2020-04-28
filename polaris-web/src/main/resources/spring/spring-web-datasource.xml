@@ -15,7 +15,7 @@
         <property name="password" value="${jdbc.password}"/>
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="filters" value="stat,config"/>
-        <property name="maxActive" value="500"/>
+        <property name="maxActive" value="100"/>
         <property name="initialSize" value="5"/>
         <property name="maxWait" value="1000"/>
         <property name="minIdle" value="1"/>
@@ -35,7 +35,7 @@
         <property name="configLocation"
                   value="classpath:config/mybatis-config.xml"/>
         <property name="typeAliasesPackage"
-                  value="com.polaris.common"/>
+                  value="com.polaris.common.entity"/>
     </bean>
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">

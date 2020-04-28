@@ -19,12 +19,9 @@
             <mvc:mapping path="/*"/>
             <bean class="com.polaris.interceptors.UserInterceptor"></bean>
         </mvc:interceptor>
-        <mvc:interceptor>
-            <mvc:mapping path="/*"/>
-            <mvc:exclude-mapping path="/*"/>
-            <bean class="com.polaris.interceptors.ExceptionInterceptor"></bean>
-        </mvc:interceptor>
     </mvc:interceptors>
+    
+    <bean id="handlerExceptionResolver" class="com.polaris.interceptors.ExceptionInterceptor"/>
     <mvc:annotation-driven>
         <mvc:message-converters register-defaults="false">
             <!-- StringHttpMessageConverter编码为UTF-8，防止乱码-->

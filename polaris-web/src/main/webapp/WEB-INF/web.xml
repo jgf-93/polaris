@@ -11,12 +11,12 @@
         <servlet-class>
             org.springframework.web.servlet.DispatcherServlet
         </servlet-class>
-        <!-- 下面的代码是指定默认的配置文件 否则会默认寻找名为xxxx-servlet.xml 的配置文件
+        <!--下面的代码是指定默认的配置文件 否则会默认寻找名为xxxx-servlet.xml 的配置文件-->
         <init-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/springweb.xml</param-value>
-        <init-param>
-        -->
+            <!--这里param-name 必须是contextConfigLocation 否则会抛出异常-->
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:/spring/spring-*.xml</param-value>
+        </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
 
@@ -39,6 +39,7 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:/spring/spring-*.xml</param-value>
     </context-param>
+
     <!-- 自定义编码拦截器 也是spring为我们写好的 -->
     <filter>
         <filter-name>setcharacter</filter-name>
