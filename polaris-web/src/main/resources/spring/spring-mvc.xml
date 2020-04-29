@@ -29,6 +29,20 @@
             <mvc:exclude-mapping path="/*.ico"/>
             <bean class="com.polaris.interceptors.UserInterceptor"></bean>
         </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/user/login"/>
+            <mvc:exclude-mapping path="/user/register"/>
+            <mvc:exclude-mapping path="/**/fonts/*"/>
+            <mvc:exclude-mapping path="/**/*.css"/>
+            <mvc:exclude-mapping path="/**/*.js"/>
+            <mvc:exclude-mapping path="/**/*.png"/>
+            <mvc:exclude-mapping path="/**/*.gif"/>
+            <mvc:exclude-mapping path="/**/*.jpg"/>
+            <mvc:exclude-mapping path="/**/*.jpeg"/>
+            <mvc:exclude-mapping path="/*.ico"/>
+            <bean class="com.polaris.interceptors.RedisIdempotentInterceptor"></bean>
+        </mvc:interceptor>
     </mvc:interceptors>
 
     <bean id="handlerExceptionResolver" class="com.polaris.interceptors.ExceptionInterceptor"/>
