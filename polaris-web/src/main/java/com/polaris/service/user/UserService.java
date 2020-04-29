@@ -18,6 +18,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,7 +35,7 @@ public class UserService {
     /**
      * @param userRequest
      */
-    public void login(HttpServletResponse response, UserRequest userRequest) {
+    public void login(HttpServletRequest request, HttpServletResponse response, UserRequest userRequest) throws UnsupportedEncodingException {
         Assert.notNull(userRequest.getUserName(), "用户账号不能为空!");
         Assert.hasLength(userRequest.getPassword(), "用户密码不能为空!");
         logger.info(String.format("请求参数打印-用户名打印:%s,密码打印:%s", userRequest.getUserName(), userRequest.getPassword()));
@@ -44,12 +46,13 @@ public class UserService {
         if (user == null) {
             Assert.notNull(user, "当前用户不存在!");
         }
-        String key = Base64Tool.encrypt(String.valueOf(user.getId()));
         //把用户信息放入redis
-        redisValueService.set(key, user);
+        redisValueService.set(String.valueOf(user.getId()), user);
         //吧用户信息放入cookie
-        response.setHeader(RedisConstant.REDIS_USER_KEY, key);
-        Cookie cookie = new Cookie("user", JSON.toJSONString(user));
+        String key = Base64Tool.encrypt(String.valueOf(user.getId()));
+        Cookie redisCookie = new Cookie(RedisConstant.REDIS_USER_KEY, key);
+        response.addCookie(redisCookie);
+        Cookie cookie = new Cookie("user", URLEncoder.encode(JSON.toJSONString(user), "UTF-8"));
         cookie.setMaxAge(5 * 365 * 24 * 60 * 60);
         response.addCookie(cookie);
     }

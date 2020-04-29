@@ -4,12 +4,12 @@
 <mapper namespace="com.polaris.common.mapper.UserMapper">
     <resultMap id="userResult" type="User">
         <result property="id" column="id"/>
-        <result property="userName" column="user_name"/>
-        <result property="password" column="pass_word"/>
         <result property="photo" column="photo"/>
         <result property="mobile" column="mobile"/>
         <result property="qq" column="qq"/>
         <result property="loginTime" column="login_time"/>
+        <result property="userName" column="user_name"/>
+        <result property="password" column="pass_word"/>
     </resultMap>
 
     <select id="queryUser" parameterType="map" resultType="User">

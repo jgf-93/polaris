@@ -20,10 +20,10 @@ public class ExceptionInterceptor implements HandlerExceptionResolver {
     @Override
     public ModelAndView resolveException(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) {
         //此处打印日志  用于排查问题
-        logger.error(e);
+        e.printStackTrace();
         BaseResponse baseResponse = new BaseResponse();
         if (e instanceof ServiceException) {
-            baseResponse.setMessage("业务异常:" + e.getMessage());
+            baseResponse.setMessage("业务异常" + e.getMessage());
             baseResponse.setCode(SystemConstant.SERVICE_ERROR_CODE);
         } else if (e instanceof ParameterException
                 || e instanceof IllegalArgumentException) {
@@ -33,7 +33,7 @@ public class ExceptionInterceptor implements HandlerExceptionResolver {
             baseResponse.setMessage("用户会话过期:" + e.getMessage());
             baseResponse.setCode(SystemConstant.USER_EXPIRE_CODE);
         } else {
-            baseResponse.setMessage("系统异常:" + e.getMessage());
+            baseResponse.setMessage("系统异常");
             baseResponse.setCode(SystemConstant.SYSTEM_ERROR_CODE);
         }
         printJsonResponse(httpServletResponse, JSON.toJSONString(baseResponse));

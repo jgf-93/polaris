@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.UnsupportedEncodingException;
 
 /**
  * 用户登陆接口
@@ -23,8 +24,8 @@ public class UserController extends BaseController {
 
     @RequestMapping("login")
     @ResponseBody
-    public BaseResponse Login(UserRequest userRequest) {
-        userService.login(getResponse(), userRequest);
+    public BaseResponse Login(UserRequest userRequest) throws UnsupportedEncodingException {
+        userService.login(getRequest(), getResponse(), userRequest);
         return BaseResponse.buildSuccessResponse("", "");
     }
 
@@ -32,5 +33,12 @@ public class UserController extends BaseController {
     @ResponseBody
     public BaseResponse register(UserRequest userRequest) {
         return userService.register(userRequest);
+    }
+
+    @RequestMapping("test")
+    @ResponseBody
+    public BaseResponse test(UserRequest userRequest) {
+        //return userService.register(userRequest);
+        return BaseResponse.buildSuccessResponse("", "");
     }
 }
