@@ -39,7 +39,16 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:/spring/spring-*.xml</param-value>
     </context-param>
+    <context-param>
+        <param-name>log4jConfigLocation</param-name>
+        <param-value>classpath:/config/log4j.xml</param-value>
+    </context-param>
 
+    <listener>
+        <listener-class>
+            org.springframework.web.util.Log4jConfigListener
+        </listener-class>
+    </listener>
     <!-- 自定义编码拦截器 也是spring为我们写好的 -->
     <filter>
         <filter-name>setcharacter</filter-name>

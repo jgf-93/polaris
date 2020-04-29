@@ -25,7 +25,7 @@ public class UserController extends BaseController {
     @RequestMapping("login")
     @ResponseBody
     public BaseResponse Login(UserRequest userRequest) throws UnsupportedEncodingException {
-        userService.login(getRequest(), getResponse(), userRequest);
+        userService.login(getResponse(), userRequest);
         return BaseResponse.buildSuccessResponse("", "");
     }
 

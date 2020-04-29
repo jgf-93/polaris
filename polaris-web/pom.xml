@@ -89,7 +89,7 @@
                         <filtering>true</filtering>
                     </resource>
                     <resource>
-                        <directory>src/main/resources/config/dev</directory>
+                        <directory>src/main/resources/config</directory>
                         <filtering>true</filtering>
                     </resource>
                 </resources>
@@ -112,7 +112,7 @@
                         <filtering>true</filtering>
                     </resource>
                     <resource>
-                        <directory>src/main/resources/config/test</directory>
+                        <directory>src/main/resources/config</directory>
                         <filtering>true</filtering>
                     </resource>
                 </resources>
@@ -136,7 +136,7 @@
                         <filtering>true</filtering>
                     </resource>
                     <resource>
-                        <directory>src/main/resources/config/production</directory>
+                        <directory>src/main/resources/config</directory>
                         <filtering>true</filtering>
                     </resource>
                 </resources>

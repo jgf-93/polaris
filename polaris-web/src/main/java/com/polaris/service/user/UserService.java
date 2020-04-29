@@ -16,7 +16,6 @@ import org.springframework.util.Assert;
 
 import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -35,7 +34,7 @@ public class UserService {
     /**
      * @param userRequest
      */
-    public void login(HttpServletRequest request, HttpServletResponse response, UserRequest userRequest) throws UnsupportedEncodingException {
+    public void login(HttpServletResponse response, UserRequest userRequest) throws UnsupportedEncodingException {
         Assert.notNull(userRequest.getUserName(), "用户账号不能为空!");
         Assert.hasLength(userRequest.getPassword(), "用户密码不能为空!");
         logger.info(String.format("请求参数打印-用户名打印:%s,密码打印:%s", userRequest.getUserName(), userRequest.getPassword()));

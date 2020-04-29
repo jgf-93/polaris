@@ -26,6 +26,7 @@
             <mvc:exclude-mapping path="/**/*.gif"/>
             <mvc:exclude-mapping path="/**/*.jpg"/>
             <mvc:exclude-mapping path="/**/*.jpeg"/>
+            <mvc:exclude-mapping path="/**/*.html"/>
             <mvc:exclude-mapping path="/*.ico"/>
             <bean class="com.polaris.interceptors.UserInterceptor"></bean>
         </mvc:interceptor>
@@ -40,6 +41,7 @@
             <mvc:exclude-mapping path="/**/*.gif"/>
             <mvc:exclude-mapping path="/**/*.jpg"/>
             <mvc:exclude-mapping path="/**/*.jpeg"/>
+            <mvc:exclude-mapping path="/**/*.html"/>
             <mvc:exclude-mapping path="/*.ico"/>
             <bean class="com.polaris.interceptors.RedisIdempotentInterceptor"></bean>
         </mvc:interceptor>

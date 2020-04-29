@@ -3,17 +3,18 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.polaris.common.mapper.UserMapper">
     <resultMap id="userResult" type="User">
-        <result property="id" column="id"/>
-        <result property="photo" column="photo"/>
-        <result property="mobile" column="mobile"/>
-        <result property="qq" column="qq"/>
-        <result property="loginTime" column="login_time"/>
-        <result property="userName" column="user_name"/>
-        <result property="password" column="pass_word"/>
+        <result column="id" property="id"/>
+        <result column="photo" property="photo"/>
+        <result column="mobile" property="mobile"/>
+        <result column="qq" property="qq"/>
+        <result column="login_time" property="loginTime"/>
+        <result column="user_name" property="userName"/>
+        <result column="pass_word" property="password"/>
     </resultMap>
 
-    <select id="queryUser" parameterType="map" resultType="User">
-        select *from user where user_name=#{userName} and pass_word=#{password} limit 1
+    <select id="queryUser" parameterType="map" resultMap="userResult">
+        select *
+        from user where user_name=#{userName} and pass_word=#{password} limit 1
     </select>
     <insert id="insert" parameterType="User">
         insert into user
