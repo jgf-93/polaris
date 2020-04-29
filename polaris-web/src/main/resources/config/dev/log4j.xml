@@ -55,6 +55,21 @@
         </filter>
     </appender>
 
+    <logger name="org.springframework">
+        <level value="DEBUG"/>
+    </logger>
+    <logger name="org.mybatis.spring">
+        <level value="DEBUG"/>
+    </logger>
+    <logger name="net.sf.ehcache">
+        <level value="DEBUG"/>
+    </logger>
+    <logger name="com.mchange.v2">
+        <level value="DEBUG"/>
+    </logger>
+    <logger name="java.sql">
+        <level value="DEBUG"/>
+    </logger>
     <root>
         <priority value="DEBUG"/>
         <appender-ref ref="CONSOLE"/>

@@ -2,6 +2,7 @@ package com.polaris.controller.redis;
 
 import com.polaris.common.re.BaseResponse;
 import com.polaris.common.redis.TokenService;
+import com.polaris.controller.BaseController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -9,7 +10,7 @@ import javax.annotation.Resource;
 
 @Controller
 @RequestMapping("idempotent")
-public class IdempotentController {
+public class IdempotentController extends BaseController {
     @Resource
     private TokenService tokenService;
 
