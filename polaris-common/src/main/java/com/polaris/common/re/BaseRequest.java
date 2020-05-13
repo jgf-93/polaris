@@ -6,6 +6,6 @@ import java.io.Serializable;
 
 @Data
 public class BaseRequest implements Serializable {
-    private int pageNo = 0;
+    private int pageNo = 1;
     private int pageSize = 10;
 }

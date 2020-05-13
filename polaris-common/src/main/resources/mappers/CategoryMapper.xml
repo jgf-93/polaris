@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//sqlmap.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.polaris.common.mapper.CategoryMapper">
+    <resultMap id="categoryResult" type="Category">
+        <result column="id" property="id"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="level" property="level"/>
+        <result column="name" property="name"/>
+        <result column="created" property="created"/>
+        <result column="modified" property="modified"/>
+    </resultMap>
+
+    <select id="query" parameterType="map" resultMap="categoryResult">
+        select *
+        from category
+        <where>
+            <if test="parentId!=null">
+                parent_id=#{parentId},
+            </if>
+            <if test="level!=null">
+                level=#{level},
+            </if>
+            <if test="name!=null">
+                name=#{name}
+            </if>
+            <if test="startIndex!=null">
+                limit startIndex,pageSize
+            </if>
+        </where>
+    </select>
+    <insert id="insert" parameterType="Category">
+        insert into category
+        (parent_id,level,name,created,modified)
+        values
+        (#{parentId},#{level},#{name},#{created},#{modified})
+        <selectKey keyProperty="id" resultType="long">
+            select last_insert_id()
+        </selectKey>
+    </insert>
+</mapper>
