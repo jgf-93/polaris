@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//sqlmap.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.polaris.common.mapper.FileUploadRecordMapper">
+    <resultMap id="fileUploadRecord" type="FileUploadRecord">
+        <result column="id" property="id"/>
+        <result column="type" property="type"/>
+        <result column="name" property="name"/>
+        <result column="url" property="url"/>
+        <result column="upload_id" property="uploadId"/>
+        <result column="created" property="created"/>
+        <result column="modified" property="modified"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="FileUploadRecord">
+        insert into file_upload_record
+        (type,name,upload_id,url,created,modified)
+        values
+        (#{type},#{name},#{uploadId},#{url},#{created},#{modified})
+        <selectKey keyProperty="id" resultType="long">
+            select last_insert_id()
+        </selectKey>
+    </insert>
+</mapper>
