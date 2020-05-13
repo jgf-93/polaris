@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class ExceptionInterceptor implements HandlerExceptionResolver {
-    private Logger logger = Logger.getLogger(ExceptionHandler.class);
+    private Logger logger = Logger.getLogger(ExceptionInterceptor.class);
 
     @Override
     public ModelAndView resolveException(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) {
