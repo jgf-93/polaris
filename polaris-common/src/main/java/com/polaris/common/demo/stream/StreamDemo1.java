@@ -2,6 +2,8 @@ package com.polaris.common.demo.stream;
 
 import lombok.Data;
 
+import java.util.stream.Stream;
+
 /**
  * Stream的操作符大体上分为两种：中间操作符和终止操作符
  * <p>
@@ -40,7 +42,7 @@ public class StreamDemo1 {
         System.out.print(value.get());*/
         //boolean result=Stream.of("b", "a", "v", "d", "h", "p").noneMatch(e->"o".equalsIgnoreCase(e));
         //boolean result=Stream.of("b", "a", "v", "d", "h", "p").anyMatch(e->"a".equalsIgnoreCase(e));
-        //int value=Stream.of(0,2,3,8,9,5,6,4).max((e1,e2)->e1.compareTo(e2)).get();
+        //int value= Stream.of(0,2,3,8,9,5,6,4).max((e1, e2)->e2.compareTo(e1)).get();
         //int value = Stream.of(0, 2, 3, 8, 9, 5, 6, 4).reduce(0, (e1, e2) -> e1 + e2);
         //Stream.of(0, 2, 3, 8, 9, 5, 6, 4).parallel().forEachOrdered(e -> System.out.println(Thread.currentThread().getName() + e));
         //Object[] objects = Stream.of(0, 2, 3, 8, 9, 5, 6, 4).toArray();

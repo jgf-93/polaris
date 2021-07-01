@@ -1,5 +1,6 @@
 package com.polaris.common.demo.stream;
 
+import com.alibaba.fastjson.JSON;
 import lombok.Data;
 
 import java.util.List;
@@ -71,7 +72,7 @@ public class StreamDemo3 {
 
         //Collectors.collectingAndThen()收集后操作，如果你要在收集数据后再做一些操作，那么这个就非常有用了。
         Object ob = Stream.of(user1, user2, user3).collect(Collectors.collectingAndThen(Collectors.toList(), List::listIterator));
-        System.out.println(ob);
+        System.out.println(JSON.toJSONString(ob));
     }
 
     @Data
