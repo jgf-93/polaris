@@ -16,7 +16,9 @@ public class FileController {
 
     @RequestMapping("videoUploadPart")
     public BaseResponse videoUploadPart(FileRequest request) throws Exception {
+/*
         fileService.videoUploadPart(request.getMultipartFile());
+*/
         return BaseResponse.buildSuccessResponse("上传成功", "");
     }
 }
