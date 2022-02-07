@@ -10,9 +10,9 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+//@Component
 public class OssUtils {
-    @Resource
+    //@Resource
     private OssClientFactory ossClientFactory;
 
     public void createBucket(String bucketName) {

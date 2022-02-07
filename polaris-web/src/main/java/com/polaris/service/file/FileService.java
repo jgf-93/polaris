@@ -17,12 +17,12 @@ public class FileService {
 
     public static String ossPath = "/video/UUID";
 
-    @Resource
-    private OssUtils ossUtils;
+/*    @Resource
+    private OssUtils ossUtils;*/
     @Resource
     private FileUploadRecordMapper fileUploadRecordMapper;
 
-    public void videoUploadPart(MultipartFile multipartFile) throws Exception {
+/*    public void videoUploadPart(MultipartFile multipartFile) throws Exception {
         String filePath = ossPath.replace("UUID", UUID.randomUUID().toString()) + "-video.mp4";
         String uploadId = ossUtils.partUpload("video", filePath, multipartFile.getSize(), multipartFile.getInputStream());
         if (!StringUtils.isEmpty(uploadId)) {
@@ -33,5 +33,5 @@ public class FileService {
             fileUploadRecord.setUrl(filePath);
             fileUploadRecordMapper.insert(fileUploadRecord);
         }
-    }
+    }*/
 }
