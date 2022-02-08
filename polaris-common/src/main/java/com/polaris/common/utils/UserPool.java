@@ -9,6 +9,9 @@ public class UserPool {
 
     public static ThreadLocal<User> userPool = new ThreadLocal();
 
+    private UserPool(){
+
+    }
     public static void setUser(User user) {
         userPool.set(user);
     }
