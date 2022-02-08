@@ -7,6 +7,7 @@ import com.polaris.common.exception.ServiceException;
 import com.polaris.common.exception.UserExpireException;
 import com.polaris.common.redis.RedisValueServiceImpl;
 import com.polaris.common.utils.Base64Tool;
+import com.polaris.common.utils.UserPool;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -46,6 +47,7 @@ public class UserInterceptor implements HandlerInterceptor {
         if (user == null) {
             throw new UserExpireException("用户会话过期,请重新登陆!");
         }
+        UserPool.setUser(user);
         return true;
     }
 
@@ -56,6 +58,6 @@ public class UserInterceptor implements HandlerInterceptor {
 
     @Override
     public void afterCompletion(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) throws Exception {
-
+        UserPool.remove();
     }
 }
