@@ -5,10 +5,11 @@ import com.polaris.common.redis.TokenService;
 import com.polaris.controller.BaseController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
-@Controller
+@RestController
 @RequestMapping("idempotent")
 public class IdempotentController extends BaseController {
     @Resource

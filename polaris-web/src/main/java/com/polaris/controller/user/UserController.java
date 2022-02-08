@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
@@ -15,7 +16,7 @@ import java.io.UnsupportedEncodingException;
 /**
  * 用户登陆接口
  */
-@Controller
+@RestController
 @RequestMapping("/user")
 public class UserController extends BaseController {
 
