@@ -21,6 +21,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 @Service
 public class UserService {
@@ -47,14 +48,11 @@ public class UserService {
         }
         //把用户信息放入redis
         redisValueService.set(String.valueOf(user.getId()), user);
-        //吧用户信息放入cookie
-        String key = Base64Tool.encrypt(String.valueOf(user.getId()));
-        Cookie redisCookie = new Cookie(RedisConstant.REDIS_USER_KEY, key);
+        String token=UUID.randomUUID().toString();
+        Cookie redisCookie = new Cookie(RedisConstant.REDIS_USER_KEY, token);
+        logger.info("用户的tokenid打印:"+token);
+        redisCookie.setMaxAge(5 * 365 * 24 * 60 * 60);
         response.addCookie(redisCookie);
-        Cookie cookie = new Cookie("user", URLEncoder.encode(JSON.toJSONString(user), "UTF-8"));
-        cookie.setMaxAge(5 * 365 * 24 * 60 * 60);
-        logger.info("cookievalue"+JSON.toJSONString(cookie));
-        response.addCookie(cookie);
     }
 
     public BaseResponse register(UserRequest userRequest) {
