@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--导入属性配置-->
+    <properties resource="generator.properties"></properties>
+
+    <!--指定特定数据库的jdbc驱动jar包的位置-->
+    <classPathEntry location="${jdbc.driverLocation}"/>
+
+    <context id="default" targetRuntime="MyBatis3">
+
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin">
+        </plugin>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin">
+            <property name="suppressJavaInterface" value="false" />
+        </plugin>
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin">
+        </plugin>
+
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection
+                driverClass="${jdbc.driverClass}"
+                connectionURL="${jdbc.connectionURL}"
+                userId="${jdbc.userId}"
+                password="${jdbc.password}">
+        </jdbcConnection>
+
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+
+        <javaModelGenerator targetPackage="com.futurehotel.hos.room.biz.dao.dataobject"
+                            targetProject="${project.location}/hosroom-biz/src/main/java">
+            <property name="rootClass" value="com.futurehotel.dopf.domain.BaseEntity"/>
+            <property name="enableSubPackages" value="false"/>
+            <property name="constructorBased" value="true"/>
+            <property name="trimStrings" value="true"/>
+            <property name="immutable" value="false"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mybatis"
+                         targetProject="${project.location}/hosroom-biz/src/main/resources">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator targetPackage="com.futurehotel.hos.room.biz.dao"
+                             targetProject="${project.location}/hosroom-biz/src/main/java" type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+            <property name="rootInterface" value="com.futurehotel.dopf.base.dao.IBaseMapper"/>
+        </javaClientGenerator>
+
+<!--        <table tableName="cik_hotel_room_rel" domainObjectName="CikHotelRoomRelDO"-->
+<!--               enableCountByExample="true" enableUpdateByExample="true"-->
+<!--               enableDeleteByExample="true" enableSelectByExample="true"-->
+<!--               selectByExampleQueryId="true">-->
+<!--        </table>-->
+<!--        <table tableName="cik_hotel_room_type" domainObjectName="CikHotelRoomTypeDO"-->
+<!--               enableCountByExample="true" enableUpdateByExample="true"-->
+<!--               enableDeleteByExample="true" enableSelectByExample="true"-->
+<!--               selectByExampleQueryId="true">-->
+<!--        </table>-->
+<!--        <table tableName="fh_house" domainObjectName="FhHouseDO"-->
+<!--               enableCountByExample="true" enableUpdateByExample="true"-->
+<!--               enableDeleteByExample="true" enableSelectByExample="true"-->
+<!--               selectByExampleQueryId="true">-->
+<!--        </table>-->
+<!--        <table tableName="fh_house_floor" domainObjectName="FhHouseFloorDO"-->
+<!--               enableCountByExample="true" enableUpdateByExample="true"-->
+<!--               enableDeleteByExample="true" enableSelectByExample="true"-->
+<!--               selectByExampleQueryId="true">-->
+<!--        </table>-->
+<!--        <table tableName="fh_rateplan" domainObjectName="FhRateplanDO"-->
+<!--               enableCountByExample="true" enableUpdateByExample="true"-->
+<!--               enableDeleteByExample="true" enableSelectByExample="true"-->
+<!--               selectByExampleQueryId="true">-->
+<!--        </table>-->
+        <table tableName="fh_room_card" domainObjectName="FhRoomCardDO"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true">
+        </table>
+<!--        <table tableName="fh_roompolicy" domainObjectName="FhRoompolicyDO"-->
+<!--               enableCountByExample="true" enableUpdateByExample="true"-->
+<!--               enableDeleteByExample="true" enableSelectByExample="true"-->
+<!--               selectByExampleQueryId="true">-->
+<!--        </table>-->
+<!--        <table tableName="fh_roomstate_ext" domainObjectName="FhRoomstateExtDO"-->
+<!--               enableCountByExample="true" enableUpdateByExample="true"-->
+<!--               enableDeleteByExample="true" enableSelectByExample="true"-->
+<!--               selectByExampleQueryId="true">-->
+<!--        </table>-->
+        <!--<table tableName="fh_close_room" domainObjectName="FhCloseRoomDO"-->
+               <!--enableCountByExample="true" enableUpdateByExample="true"-->
+               <!--enableDeleteByExample="true" enableSelectByExample="true"-->
+               <!--selectByExampleQueryId="true">-->
+        <!--</table>-->
+
+    </context>
+</generatorConfiguration>
