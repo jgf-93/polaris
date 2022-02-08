@@ -38,11 +38,14 @@ public class UserInterceptor implements HandlerInterceptor {
         //httpServletRequest.get
         logger.info("当前请求进入了拦截器:" + httpServletRequest.getRequestURL());
         Cookie[] cookies = httpServletRequest.getCookies();
+        if (cookies == null) {
+            throw new ServiceException("当前用户未登录,请前去登陆!");
+        }
         Cookie cookie = Stream.of(cookies).filter(c -> RedisConstant.REDIS_USER_KEY.equals(c.getName())).findFirst().orElse(null);
         if (cookie == null) {
             throw new ServiceException("当前用户未登录,请前去登陆!");
         }
-        User user = redisValueService.get(Base64Tool.decrypt(cookie.getValue()));
+        User user = redisValueService.get(cookie.getValue());
         logger.info("从redis获取到用户信息:" + JSON.toJSONString(user));
         if (user == null) {
             throw new UserExpireException("用户会话过期,请重新登陆!");

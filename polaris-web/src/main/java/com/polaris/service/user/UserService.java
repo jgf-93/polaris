@@ -53,6 +53,7 @@ public class UserService {
         response.addCookie(redisCookie);
         Cookie cookie = new Cookie("user", URLEncoder.encode(JSON.toJSONString(user), "UTF-8"));
         cookie.setMaxAge(5 * 365 * 24 * 60 * 60);
+        logger.info("cookievalue"+JSON.toJSONString(cookie));
         response.addCookie(cookie);
     }
 
