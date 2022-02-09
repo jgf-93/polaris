@@ -9,7 +9,9 @@ public class RedisValueServiceImpl<K, V> extends AbstractRedisService {
     public void set(K k, V v) {
         redisTemplate.opsForValue().set(k, v);
     }
-
+    public void hSet(K k,V v){
+        redisTemplate.opsForHash().hasKey(k,v);
+    }
     public void set(K k, V v, Long time, TimeUnit unit) {
         redisTemplate.opsForValue().set(k, v, time, unit);
     }
