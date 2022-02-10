@@ -27,4 +27,10 @@ public class RedisValueServiceImpl<K, V> extends AbstractRedisService {
     public void inc(K k, Long data) {
         redisTemplate.opsForValue().increment(k, data);
     }
+    public boolean setIfAbsent(String key,String value,Long time,TimeUnit timeUnit){
+        return redisTemplate.opsForValue().setIfAbsent(key,value,time,timeUnit);
+    }
+    public void releaseLock(String key){
+        redisTemplate.delete(key);
+    }
 }

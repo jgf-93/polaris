@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import javax.annotation.Resource;
 
@@ -17,6 +18,7 @@ import javax.annotation.Resource;
 @RunWith(SpringJUnit4ClassRunner.class)
 // 指定Spring的配置文件路径
 @ContextConfiguration(locations = {"classpath*:/spring/spring-*.xml"})
+@WebAppConfiguration("src/main/resources")//扫描了resources配置文件夹里面的配置，后恢复正常
 public class MqTestService {
     private Logger logger = Logger.getLogger(MqTestService.class);
     @Resource
