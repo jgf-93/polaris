@@ -51,18 +51,19 @@ public class RedisTestService {
      * 单机版redis安装测试
      */
     @Test
-    public void RedisTest() {
+    public void RedisTest() throws InterruptedException {
         RedisUser redisUser = new RedisUser("1369", "张三", 18);
         //redisValueService.set(redisUser.getIdCard(), redisUser, 300L, TimeUnit.SECONDS);//缓存30秒
         //redisValueService.hSet("test",redisUser);
         //RedisUser getRedisUser = (RedisUser) redisValueService.get(redisUser.getIdCard());
         //System.out.println("从redis中去除的缓存用户对象打印:" + JSON.toJSONString(getRedisUser));
         for(int i=0;i<50;i++){
+            Thread.sleep(1000l);
             new Thread(()->{
                 getMoney("776238");
-            });
+            }).start();
         }
-        System.out.println("当前剩余金额:"+money);
+
     }
     private int money=100;
     public void getMoney(String orderid){
@@ -70,6 +71,7 @@ public class RedisTestService {
             boolean flag = redisValueService.setIfAbsent(orderid, orderid, 10000L, TimeUnit.MILLISECONDS);
             if (flag) {
                 money--;
+                System.out.println(money);
             }
         }catch (Exception e){
             e.printStackTrace();
