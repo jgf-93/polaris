@@ -5,6 +5,10 @@ import java.io.*;
 public class HttpUrlTest {
 
     public static void main(String[] args) {
+
+    }
+
+    public void testFlie() {
         StringBuffer buffer = new StringBuffer();
         try (FileInputStream fileInputStream = new FileInputStream("/Users/jiangguanfeng/Desktop/未命名.txt");
              BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
