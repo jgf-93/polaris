@@ -9,7 +9,8 @@ import com.polaris.common.re.request.UserRequest;
 import com.polaris.common.redis.RedisValueServiceImpl;
 import com.polaris.common.utils.Base64Tool;
 import com.polaris.common.wrapper.UserWrapper;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -25,7 +26,7 @@ import java.util.UUID;
 
 @Service
 public class UserService {
-    private Logger logger = Logger.getLogger(UserService.class);
+    private Logger logger = LoggerFactory.getLogger(UserService.class);
     @Autowired
     private UserMapper userMapper;
 
@@ -48,9 +49,9 @@ public class UserService {
         }
         //把用户信息放入redis
         redisValueService.set(String.valueOf(user.getId()), user);
-        String token=UUID.randomUUID().toString();
+        String token = UUID.randomUUID().toString();
         Cookie redisCookie = new Cookie(RedisConstant.REDIS_USER_KEY, token);
-        logger.info("用户的tokenid打印:"+token);
+        logger.info("用户的tokenid打印:" + token);
         redisCookie.setMaxAge(5 * 365 * 24 * 60 * 60);
         response.addCookie(redisCookie);
     }

@@ -3,6 +3,7 @@ package com.polaris.interceptors;
 import com.polaris.common.annotations.RedisIdempotent;
 import com.polaris.common.redis.RedisValueServiceImpl;
 import com.polaris.common.redis.TokenService;
+import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -11,7 +12,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
-
+@Component
 public class RedisIdempotentInterceptor implements HandlerInterceptor {
     @Resource
     private TokenService tokenService;

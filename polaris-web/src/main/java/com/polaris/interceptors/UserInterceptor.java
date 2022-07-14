@@ -8,9 +8,10 @@ import com.polaris.common.exception.UserExpireException;
 import com.polaris.common.redis.RedisValueServiceImpl;
 import com.polaris.common.utils.Base64Tool;
 import com.polaris.common.utils.UserPool;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.StringUtils;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -19,8 +20,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.stream.Stream;
 
+@Component
 public class UserInterceptor implements HandlerInterceptor {
-    private Logger logger = Logger.getLogger(UserInterceptor.class);
+    private Logger logger = LoggerFactory.getLogger(UserInterceptor.class);
     @Autowired
     private RedisValueServiceImpl<String, User> redisValueService;
 
