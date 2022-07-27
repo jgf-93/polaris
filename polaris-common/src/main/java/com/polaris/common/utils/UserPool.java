@@ -7,11 +7,12 @@ import com.polaris.common.entity.User;
  */
 public class UserPool {
 
-    public static ThreadLocal<User> userPool = new ThreadLocal();
+    private static ThreadLocal<User> userPool = new ThreadLocal();
 
-    private UserPool(){
+    private UserPool() {
 
     }
+
     public static void setUser(User user) {
         userPool.set(user);
     }
