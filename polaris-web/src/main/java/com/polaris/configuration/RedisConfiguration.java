@@ -8,12 +8,12 @@ import org.springframework.data.redis.core.RedisTemplate;
 import redis.clients.jedis.JedisPoolConfig;
 
 @Configuration
-public class ResdiConfiguration {
-    @Value("maxTotal")
+public class RedisConfiguration {
+    @Value("${redis.maxTotal}")
     private int maxTotal;
-    @Value("maxIdle")
+    @Value("${redis.maxIdle}")
     private int maxIdle;
-    @Value("minIdle")
+    @Value("${redis.minIdle}")
     private int minIdle;
 
     @Bean

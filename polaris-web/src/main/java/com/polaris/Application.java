@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
         scanBasePackages = {"com.polaris"},
         exclude = {MultipartAutoConfiguration.class}
 )
-@ImportResource(value = {"classpath:dubbo-provider.xml", "classpath:dubbo-consumer.xml"})
+//@ImportResource(value = {"classpath:dubbo-provider.xml", "classpath:dubbo-consumer.xml"})
 @EnableTransactionManagement
 @MapperScan("com.polaris.common.mapper")
 public class Application extends SpringBootServletInitializer {
