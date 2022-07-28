@@ -83,17 +83,13 @@
     <profiles>
         <profile>
             <id>dev</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
             <properties>
-                <configPath>src/main/resources/config/dev</configPath>
+                <configPath>src/main/resources/config</configPath>
+                <!-- 环境标识，需要与配置文件的名称相对应 -->
+                <activatedProperties>dev</activatedProperties>
             </properties>
             <build>
                 <finalName>polaris-web</finalName>
-                <filters>
-                    <filter>src/main/resources/profile/dev.properties</filter>
-                </filters>
                 <resources>
                     <resource>
                         <directory>src/main/resources</directory>
@@ -108,15 +104,13 @@
         </profile>
 
         <profile>
-            <id>test</id>
+            <id>pre</id>
             <properties>
-                <configPath>src/main/resources/config/test</configPath>
+                <configPath>src/main/resources/config</configPath>
+                <activatedProperties>pre</activatedProperties>
             </properties>
             <build>
                 <finalName>polaris-web</finalName>
-                <filters>
-                    <filter>src/main/resources/profile/test.properties</filter>
-                </filters>
                 <resources>
                     <resource>
                         <directory>src/main/resources</directory>
@@ -132,15 +126,13 @@
 
 
         <profile>
-            <id>production</id>
+            <id>prod</id>
             <properties>
-                <configPath>src/main/resources/config/production</configPath>
+                <configPath>src/main/resources/config</configPath>
+                <activatedProperties>prod</activatedProperties>
             </properties>
             <build>
                 <finalName>polaris-web</finalName>
-                <filters>
-                    <filter>src/main/resources/profile/production.properties</filter>
-                </filters>
                 <resources>
                     <resource>
                         <directory>src/main/resources</directory>
