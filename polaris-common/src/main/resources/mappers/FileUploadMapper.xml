@@ -8,15 +8,15 @@
         <result column="name" property="name"/>
         <result column="url" property="url"/>
         <result column="upload_id" property="uploadId"/>
-        <result column="created" property="created"/>
-        <result column="modified" property="modified"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
     </resultMap>
 
     <insert id="insert" parameterType="FileUploadRecord">
         insert into file_upload_record
-        (type,name,upload_id,url,created,modified)
+        (type,name,upload_id,url,create_time,update_time)
         values
-        (#{type},#{name},#{uploadId},#{url},#{created},#{modified})
+        (#{type},#{name},#{uploadId},#{url},#{createTime},#{updateTime})
         <selectKey keyProperty="id" resultType="long">
             select last_insert_id()
         </selectKey>

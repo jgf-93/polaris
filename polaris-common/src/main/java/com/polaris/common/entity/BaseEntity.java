@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Data
 public class BaseEntity implements Serializable {
-    private Date created;
+    private Date createTime;
 
-    private Date modified;
+    private Date updateTime;
 }
