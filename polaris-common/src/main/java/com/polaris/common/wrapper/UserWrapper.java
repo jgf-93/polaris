@@ -15,8 +15,8 @@ public class UserWrapper {
         user.setPhoto(userRequest.getPhoto());
         user.setQq(userRequest.getQq());
         user.setUserName(userRequest.getUserName());
-        user.setCreated(new Date());
-        user.setModified(new Date());
+        user.setCreateTime(new Date());
+        user.setUpdateTime(new Date());
         return user;
     }
 }
