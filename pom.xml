@@ -16,6 +16,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>polaris-web</module>
+        <module>polaris-provider</module>
         <module>polaris-common</module>
         <module>polaris-client</module>
     </modules>
@@ -66,9 +67,41 @@
                 <version>${spring.boot.version}</version>
             </dependency>
             <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-spring-boot-starter</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-framework</artifactId>
+                <version>2.12.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-recipes</artifactId>
+                <version>2.12.0</version>
+            </dependency>
+            <dependency>
                 <groupId>com.alibaba.rocketmq</groupId>
                 <artifactId>rocketmq-client</artifactId>
                 <version>3.2.6</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.sgroschupf</groupId>
+                <artifactId>zkclient</artifactId>
+                <version>0.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>3.4.14</version>
+                <!--排除这个slf4j-log4j12-->
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-log4j12</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <!-- 分页插件 -->
             <dependency>
