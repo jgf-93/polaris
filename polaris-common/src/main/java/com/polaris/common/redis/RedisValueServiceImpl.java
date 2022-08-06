@@ -9,9 +9,7 @@ public class RedisValueServiceImpl<K, V> extends AbstractRedisService {
     public void set(K k, V v) {
         redisTemplate.opsForValue().set(k, v);
     }
-    public void hSet(K k,V v){
-        redisTemplate.opsForHash().hasKey(k,v);
-    }
+
     public void set(K k, V v, Long time, TimeUnit unit) {
         redisTemplate.opsForValue().set(k, v, time, unit);
     }
@@ -27,10 +25,12 @@ public class RedisValueServiceImpl<K, V> extends AbstractRedisService {
     public void inc(K k, Long data) {
         redisTemplate.opsForValue().increment(k, data);
     }
-    public boolean setIfAbsent(String key,String value,Long time,TimeUnit timeUnit){
-        return redisTemplate.opsForValue().setIfAbsent(key,value,time,timeUnit);
+
+    public boolean setIfAbsent(String key, String value, Long time, TimeUnit timeUnit) {
+        return redisTemplate.opsForValue().setIfAbsent(key, value, time, timeUnit);
     }
-    public void releaseLock(String key){
+
+    public void releaseLock(String key) {
         redisTemplate.delete(key);
     }
 }
