@@ -7,5 +7,7 @@
     <settings>
         <setting name="logImpl" value="LOG4J"/>
     </settings>
-
+    <typeAliases>
+        <package name="com.polaris.common.entity"/>
+    </typeAliases>
 </configuration>

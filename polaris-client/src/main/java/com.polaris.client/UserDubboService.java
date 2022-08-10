@@ -1,4 +1,8 @@
 package com.polaris.client;
 
-public class UserDubboService {
+import com.polaris.client.dto.UserDto;
+
+public interface UserDubboService {
+
+    UserDto getUser();
 }
