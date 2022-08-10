@@ -34,8 +34,5 @@
         (parent_id,level,name,create_time,update_time)
         values
         (#{parentId},#{level},#{name},#{createTime},#{updateTime})
-        <selectKey keyProperty="id" resultType="long">
-            select last_insert_id()
-        </selectKey>
     </insert>
 </mapper>
