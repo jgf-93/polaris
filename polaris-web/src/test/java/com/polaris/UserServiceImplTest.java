@@ -1,3 +1,5 @@
+package com.polaris;
+
 import com.alibaba.fastjson.JSON;
 import com.polaris.Application;
 import com.polaris.common.entity.User;
@@ -13,7 +15,7 @@ import javax.annotation.Resource;
 import java.util.Date;
 
 /**
- * 类上面的两个注解不能缺少
+ * 类上面的两个注解不x能缺少
  *
  * @RunWith(SpringRunner.class)
  * @SpringBootTest(classes = 启动类（引导类）.class)
