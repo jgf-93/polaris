@@ -1,5 +1,6 @@
 package com.polaris.provider;
 
+import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,7 +13,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
         scanBasePackages = {"com.polaris"},
         exclude = {MultipartAutoConfiguration.class}
 )
-//@ImportResource(value = {"classpath:dubbo-provider.xml", "classpath:dubbo-consumer.xml"})
+@EnableDubbo(scanBasePackages="com.polaris.provider.service")
 @EnableTransactionManagement
 @MapperScan("com.polaris.common.mapper")
 public class Application extends SpringBootServletInitializer {

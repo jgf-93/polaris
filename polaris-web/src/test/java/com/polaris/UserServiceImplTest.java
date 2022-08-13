@@ -2,10 +2,13 @@ package com.polaris;
 
 import com.alibaba.fastjson.JSON;
 import com.polaris.Application;
+import com.polaris.client.UserDubboService;
+import com.polaris.client.dto.UserDto;
 import com.polaris.common.entity.User;
 import com.polaris.common.mapper.UserMapper;
 import com.polaris.common.redis.RedisHashServiceImpl;
 import com.polaris.common.redis.RedisValueServiceImpl;
+import org.apache.dubbo.config.annotation.Reference;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -33,6 +36,8 @@ public class UserServiceImplTest {
     private RedisValueServiceImpl redisValueService;
     @Resource
     private RedisHashServiceImpl redisHashService;
+    @Reference
+    private UserDubboService userDubboService;
 
     @Test
     public void addUser() {
@@ -64,10 +69,15 @@ public class UserServiceImplTest {
         User redisUser = (User) redisValueService.get("jgf");
         System.out.println("获取到valueops:" + JSON.toJSONString(redisUser));
 
-        redisHashService.hSet("hash","userName","张健");
-        redisHashService.hSet("hash","tel","15757857623");
-        String value= (String) redisHashService.hGet("hash","userName");
+        redisHashService.hSet("hash", "userName", "张健");
+        redisHashService.hSet("hash", "tel", "15757857623");
+        String value = (String) redisHashService.hGet("hash", "userName");
         System.out.println("获取到hashops:" + JSON.toJSONString(value));
 
+    }
+    @Test
+    public void dubboTest(){
+        UserDto userDto = userDubboService.getUser();
+        System.out.println(JSON.toJSONString(userDto));
     }
 }
