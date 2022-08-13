@@ -75,6 +75,7 @@ public class UserServiceImplTest {
         System.out.println("获取到hashops:" + JSON.toJSONString(value));
 
     }
+
     @Test
     public void dubboTest(){
         UserDto userDto = userDubboService.getUser();
