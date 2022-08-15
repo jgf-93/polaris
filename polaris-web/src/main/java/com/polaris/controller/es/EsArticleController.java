@@ -16,7 +16,6 @@ public class EsArticleController {
     @Resource
     private ArticleRepository articleRepository;
 
-
     @RequestMapping("allArticle")
     public BaseResponse searchAllArticle() throws Exception {
         Iterable<ArticleES> iterable = articleRepository.findAll();
