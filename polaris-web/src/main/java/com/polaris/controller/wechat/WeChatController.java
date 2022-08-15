@@ -13,6 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class WeChatController {
     @RequestMapping("/login")
     public BaseResponse authLogin() {
-        return BaseResponse.buildSuccessResponse("", "");
+        return BaseResponse.buildSuccessResponse();
     }
 }

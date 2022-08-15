@@ -25,7 +25,7 @@ public class CategoryController {
     @RequestMapping("/insert")
     public BaseResponse insert(CategoryRequest categoryRequest) throws Exception {
         categoryService.insert(categoryRequest);
-        return BaseResponse.buildSuccessResponse("上传成功", "");
+        return BaseResponse.buildSuccessResponse();
     }
 
     /**

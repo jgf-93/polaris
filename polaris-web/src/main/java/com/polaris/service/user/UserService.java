@@ -65,6 +65,6 @@ public class UserService {
         }
         user = UserWrapper.getUser(userRequest);
         userMapper.insert(user);
-        return BaseResponse.buildSuccessResponse("注册成功!请前往登陆...", "");
+        return BaseResponse.buildSuccessResponse();
     }
 }

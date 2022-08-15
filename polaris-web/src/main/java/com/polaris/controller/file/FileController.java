@@ -20,6 +20,6 @@ public class FileController {
 /*
         fileService.videoUploadPart(request.getMultipartFile());
 */
-        return BaseResponse.buildSuccessResponse("上传成功", "");
+        return BaseResponse.buildSuccessResponse();
     }
 }

@@ -26,7 +26,7 @@ public class UserController extends BaseController {
     @ResponseBody
     public BaseResponse Login(UserRequest userRequest) throws UnsupportedEncodingException {
         userService.login(getResponse(), userRequest);
-        return BaseResponse.buildSuccessResponse("", "");
+        return BaseResponse.buildSuccessResponse();
     }
 
     @RequestMapping("register")
@@ -39,6 +39,6 @@ public class UserController extends BaseController {
     @ResponseBody
     public BaseResponse test(UserRequest userRequest) {
         //return userService.register(userRequest);
-        return BaseResponse.buildSuccessResponse("", "");
+        return BaseResponse.buildSuccessResponse();
     }
 }

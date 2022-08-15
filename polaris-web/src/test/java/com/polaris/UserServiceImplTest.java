@@ -26,9 +26,7 @@ import java.util.Date;
  * 测试方法的注解不能缺少
  * @Test 直接注入UserService对象就能够实现测试接口的调用，记得加@Autowired。
  */
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = Application.class)
-public class UserServiceImplTest {
+public class UserServiceImplTest extends com.polaris.Test {
 
     @Resource
     private UserMapper userMapper;

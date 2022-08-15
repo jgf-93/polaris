@@ -17,12 +17,12 @@ public class IdempotentController extends BaseController {
 
     @RequestMapping("/token")
     public BaseResponse getToken() {
-        return BaseResponse.buildSuccessResponse("获取token成功", tokenService.createToken());
+        return BaseResponse.buildSuccessResponse( tokenService.createToken());
     }
 
     @RequestMapping("/test")
     public BaseResponse test() {
         System.out.println("校验幂等性:" + System.currentTimeMillis());
-        return BaseResponse.buildSuccessResponse("接口调用成功,reids幂等成功", "");
+        return BaseResponse.buildSuccessResponse();
     }
 }

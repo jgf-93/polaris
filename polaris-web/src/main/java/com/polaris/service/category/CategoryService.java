@@ -33,6 +33,6 @@ public class CategoryService {
     public BaseResponse queryCategory(CategoryRequest categoryRequest) {
         Map<String, Object> map = new HashMap<>();
         map.put("parentId", categoryRequest.getParentId());
-        return BaseResponse.buildSuccessResponse("查询数据成功", categoryMapper.query(map));
+        return BaseResponse.buildSuccessResponse(categoryMapper.query(map));
     }
 }
