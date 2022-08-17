@@ -13,25 +13,25 @@ import java.util.UUID;
 @RestController
 @RequestMapping(name = "search")
 public class EsArticleController {
-    @Resource
-    private ArticleRepository articleRepository;
+//    @Resource
+//    private ArticleRepository articleRepository;
 
     @RequestMapping("allArticle")
     public BaseResponse searchAllArticle() throws Exception {
-        Iterable<ArticleES> iterable = articleRepository.findAll();
-        return BaseResponse.buildSuccessResponse(iterable);
+        //Iterable<ArticleES> iterable = articleRepository.findAll();
+        return BaseResponse.buildSuccessResponse();
     }
 
     @RequestMapping("saveArticle")
     public BaseResponse saveArticle(String title, String content) throws Exception {
-        ArticleES articleES = new ArticleES();
-        articleES.setId(UUID.class.newInstance().getLeastSignificantBits());
-        articleES.setImg("test.jpg");
-        articleES.setTitle(title);
-        articleES.setContent(content);
-        articleES.setCreateTime(new Date());
-        articleES.setUpdateTime(new Date());
-        articleES = articleRepository.save(articleES);
+//        ArticleES articleES = new ArticleES();
+//        articleES.setId(UUID.class.newInstance().getLeastSignificantBits());
+//        articleES.setImg("test.jpg");
+//        articleES.setTitle(title);
+//        articleES.setContent(content);
+//        articleES.setCreateTime(new Date());
+//        articleES.setUpdateTime(new Date());
+//        articleES = articleRepository.save(articleES);
         return BaseResponse.buildSuccessResponse();
     }
 }
