@@ -7,7 +7,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import java.util.Date;
 
 @Data
-@Document(indexName = "article")
+@Document(indexName = "db",type="article")
 public class ArticleES {
     @Id
     private Long id;
