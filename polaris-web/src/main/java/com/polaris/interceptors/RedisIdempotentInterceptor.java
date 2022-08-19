@@ -1,7 +1,6 @@
 package com.polaris.interceptors;
 
 import com.polaris.common.annotations.RedisIdempotent;
-import com.polaris.common.redis.RedisValueServiceImpl;
 import com.polaris.common.redis.TokenService;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;

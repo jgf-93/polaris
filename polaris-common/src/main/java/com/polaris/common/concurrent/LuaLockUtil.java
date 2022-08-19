@@ -1,6 +1,6 @@
 package com.polaris.common.concurrent;
 
-import com.polaris.common.redis.RedisValueServiceImpl;
+import com.polaris.common.redis.RedisService;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -9,10 +9,10 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class LuaLockUtil {
     @Resource
-    private RedisValueServiceImpl redisValueService;
+    private RedisService redisService;
 
-    public void luaLock(String key, String value, Long time, TimeUnit timeUnit){
-        redisValueService.setIfAbsent(key,value,time,timeUnit);
+    public void luaLock(String key, String value, Long time, TimeUnit timeUnit) {
+        redisService.setIfAbsent(key, value, time, timeUnit);
     }
 
 }

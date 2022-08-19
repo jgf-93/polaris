@@ -1,7 +1,7 @@
 package com.polaris.controller.es;
 
-import com.polaris.common.es.ArticleES;
-import com.polaris.common.es.ArticleRepository;
+//import com.polaris.common.es.ArticleES;
+//import com.polaris.common.es.ArticleRepository;
 import com.polaris.common.re.BaseResponse;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

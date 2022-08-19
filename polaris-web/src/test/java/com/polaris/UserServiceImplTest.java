@@ -5,8 +5,7 @@ import com.polaris.client.UserDubboService;
 import com.polaris.client.dto.UserDto;
 import com.polaris.common.entity.User;
 import com.polaris.common.mapper.UserMapper;
-import com.polaris.common.redis.RedisHashService;
-import com.polaris.common.redis.RedisStringService;
+import com.polaris.common.redis.RedisService;
 import org.apache.dubbo.config.annotation.Reference;
 import org.junit.Test;
 
@@ -27,9 +26,7 @@ public class UserServiceImplTest extends com.polaris.Test {
     @Resource
     private UserMapper userMapper;
     @Resource
-    private RedisStringService redisValueService;
-    @Resource
-    private RedisHashService redisHashService;
+    private RedisService redisService;
     @Reference
     private UserDubboService userDubboService;
 
@@ -59,13 +56,13 @@ public class UserServiceImplTest extends com.polaris.Test {
         user.setLoginTime(new Date());
         user.setCreateTime(new Date());
         user.setUpdateTime(new Date());
-        redisValueService.set("jgf", user);
-        User redisUser = (User) redisValueService.get("jgf");
+        redisService.set("jgf", user);
+        User redisUser = redisService.get("jgf");
         System.out.println("获取到valueops:" + JSON.toJSONString(redisUser));
 
-        redisHashService.hSet("hash", "userName", "张健");
-        redisHashService.hSet("hash", "tel", "15757857623");
-        String value = (String) redisHashService.hGet("hash", "userName");
+        redisService.hSet("hash", "userName", "张健");
+        redisService.hSet("hash", "tel", "15757857623");
+        String value = (String) redisService.hGet("hash", "userName");
         System.out.println("获取到hashops:" + JSON.toJSONString(value));
 
     }

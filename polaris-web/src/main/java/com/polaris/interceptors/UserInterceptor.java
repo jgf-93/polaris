@@ -5,8 +5,7 @@ import com.polaris.common.constants.RedisConstant;
 import com.polaris.common.entity.User;
 import com.polaris.common.exception.ServiceException;
 import com.polaris.common.exception.UserExpireException;
-import com.polaris.common.redis.RedisValueServiceImpl;
-import com.polaris.common.utils.Base64Tool;
+import com.polaris.common.redis.RedisService;
 import com.polaris.common.utils.UserPool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +23,7 @@ import java.util.stream.Stream;
 public class UserInterceptor implements HandlerInterceptor {
     private Logger logger = LoggerFactory.getLogger(UserInterceptor.class);
     @Autowired
-    private RedisValueServiceImpl<String, User> redisValueService;
+    private RedisService redisService;
 
     /**
      * 检查用户缓存
@@ -47,7 +46,7 @@ public class UserInterceptor implements HandlerInterceptor {
         if (cookie == null) {
             throw new ServiceException("当前用户未登录,请前去登陆!");
         }
-        User user = redisValueService.get(cookie.getValue());
+        User user = redisService.get(cookie.getValue());
         logger.info("从redis获取到用户信息:" + JSON.toJSONString(user));
         if (user == null) {
             throw new UserExpireException("用户会话过期,请重新登陆!");

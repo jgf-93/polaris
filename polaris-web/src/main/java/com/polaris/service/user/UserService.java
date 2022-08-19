@@ -1,13 +1,11 @@
 package com.polaris.service.user;
 
-import com.alibaba.fastjson.JSON;
 import com.polaris.common.constants.RedisConstant;
 import com.polaris.common.entity.User;
 import com.polaris.common.mapper.UserMapper;
 import com.polaris.common.re.BaseResponse;
 import com.polaris.common.re.request.UserRequest;
-import com.polaris.common.redis.RedisValueServiceImpl;
-import com.polaris.common.utils.Base64Tool;
+import com.polaris.common.redis.RedisService;
 import com.polaris.common.wrapper.UserWrapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +17,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -31,7 +28,7 @@ public class UserService {
     private UserMapper userMapper;
 
     @Resource
-    private RedisValueServiceImpl<String, User> redisValueService;
+    private RedisService redisService;
 
     /**
      * @param userRequest
@@ -48,7 +45,7 @@ public class UserService {
             Assert.notNull(user, "当前用户不存在!");
         }
         //把用户信息放入redis
-        redisValueService.set(String.valueOf(user.getId()), user);
+        redisService.set(String.valueOf(user.getId()), user);
         String token = UUID.randomUUID().toString();
         Cookie redisCookie = new Cookie(RedisConstant.REDIS_USER_KEY, token);
         logger.info("用户的tokenid打印:" + token);

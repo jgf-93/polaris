@@ -3,7 +3,7 @@ package com.polaris.controller;
 import com.polaris.common.constants.RedisConstant;
 import com.polaris.common.entity.User;
 import com.polaris.common.exception.UserExpireException;
-import com.polaris.common.redis.RedisValueServiceImpl;
+import com.polaris.common.redis.RedisService;
 import com.polaris.common.utils.Base64Tool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 public abstract class BaseController {
 
     @Autowired
-    private RedisValueServiceImpl<String, User> redisValueService;
+    private RedisService redisService;
 
     private ThreadLocal<HttpServletRequest> requestThreadLocal = new ThreadLocal();
 
@@ -22,7 +22,7 @@ public abstract class BaseController {
 
     protected User getUser() {
         HttpServletRequest request = requestThreadLocal.get();
-        User user = redisValueService.get(Base64Tool.decrypt(request.getHeader(RedisConstant.REDIS_USER_KEY)));
+        User user = redisService.get(Base64Tool.decrypt(request.getHeader(RedisConstant.REDIS_USER_KEY)));
         if (user == null) {
             throw new UserExpireException("用户信息不存在!");
         }
