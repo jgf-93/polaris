@@ -1,18 +1,14 @@
 package com.polaris;
 
 import com.alibaba.fastjson.JSON;
-import com.polaris.Application;
 import com.polaris.client.UserDubboService;
 import com.polaris.client.dto.UserDto;
 import com.polaris.common.entity.User;
 import com.polaris.common.mapper.UserMapper;
-import com.polaris.common.redis.RedisHashServiceImpl;
-import com.polaris.common.redis.RedisValueServiceImpl;
+import com.polaris.common.redis.RedisHashService;
+import com.polaris.common.redis.RedisStringService;
 import org.apache.dubbo.config.annotation.Reference;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
 import java.util.Date;
@@ -31,9 +27,9 @@ public class UserServiceImplTest extends com.polaris.Test {
     @Resource
     private UserMapper userMapper;
     @Resource
-    private RedisValueServiceImpl redisValueService;
+    private RedisStringService redisValueService;
     @Resource
-    private RedisHashServiceImpl redisHashService;
+    private RedisHashService redisHashService;
     @Reference
     private UserDubboService userDubboService;
 
@@ -75,7 +71,7 @@ public class UserServiceImplTest extends com.polaris.Test {
     }
 
     @Test
-    public void dubboTest(){
+    public void dubboTest() {
         UserDto userDto = userDubboService.getUser();
         System.out.println(JSON.toJSONString(userDto));
     }

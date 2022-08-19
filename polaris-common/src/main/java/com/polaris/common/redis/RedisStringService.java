@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import java.util.concurrent.TimeUnit;
 
 @Service
-public class RedisValueServiceImpl<K, V> extends AbstractRedisService {
+public class RedisStringService<K, V> extends AbstractRedisService {
     public void set(K k, V v) {
         redisTemplate.opsForValue().set(k, v);
     }

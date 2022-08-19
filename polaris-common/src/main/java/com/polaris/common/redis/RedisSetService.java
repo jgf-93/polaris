@@ -3,7 +3,7 @@ package com.polaris.common.redis;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RedisSetServiceImpl<K, V> extends AbstractRedisService {
+public class RedisSetService<K, V> extends AbstractRedisService {
     public void add(K k, V v) {
         redisTemplate.opsForSet().add(k, v);
     }

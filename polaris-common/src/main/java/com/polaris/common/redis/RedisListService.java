@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.concurrent.TimeUnit;
 @Service
-public class RedisListServiceImpl<K, V> extends AbstractRedisService {
+public class RedisListService<K, V> extends AbstractRedisService {
     public void leftPop(K k) {
         redisTemplate.opsForList().leftPop(k);
     }

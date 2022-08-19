@@ -3,7 +3,7 @@ package com.polaris.common.redis;
 import org.springframework.stereotype.Component;
 
 @Component
-public class RedisHashServiceImpl<K, V, D> extends AbstractRedisService {
+public class RedisHashService<K, V, D> extends AbstractRedisService {
     public void hSet(K k, V v, D d) {
         redisTemplate.opsForHash().put(k, v, d);
     }
