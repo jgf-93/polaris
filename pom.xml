@@ -19,6 +19,8 @@
         <module>polaris-provider</module>
         <module>polaris-common</module>
         <module>polaris-client</module>
+        <module>polaris-mq-consumer</module>
+        <module>polaris-mq-consumer2</module>
     </modules>
 
     <properties>
