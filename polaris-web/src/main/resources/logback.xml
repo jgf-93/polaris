@@ -2,7 +2,7 @@
 
 <configuration scan="true" scanPeriod="10 seconds">
     <jmxConfigurator/>
-    <property name="logDir" value="/Users/jiangguanfeng/IdeaProjects/polaris/logs/"/>
+    <property name="logDir" value="/polaris/logs/"/>
     <property name="logLevel" value="INFO"/>
 
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">

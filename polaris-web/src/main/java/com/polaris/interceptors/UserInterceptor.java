@@ -17,11 +17,14 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Stream;
 
 @Component
 public class UserInterceptor implements HandlerInterceptor {
     private Logger logger = LoggerFactory.getLogger(UserInterceptor.class);
+    private List<String> noAuthUrlList = Arrays.asList("/test");
     @Autowired
     private RedisService redisService;
 
@@ -38,6 +41,11 @@ public class UserInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
         //httpServletRequest.get
         logger.info("当前请求进入了拦截器:" + httpServletRequest.getRequestURL());
+        String requestUrl = httpServletRequest.getRequestURI();
+        //测试请求不校验token
+        if (noAuthUrlList.stream().anyMatch(n -> requestUrl.contains(n))) {
+            return true;
+        }
         Cookie[] cookies = httpServletRequest.getCookies();
         if (cookies == null) {
             throw new ServiceException("当前用户未登录,请前去登陆!");
