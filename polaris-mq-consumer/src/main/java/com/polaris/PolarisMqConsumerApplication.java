@@ -1,4 +1,4 @@
-package com.example.polaris;
+package com.polaris;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -12,10 +12,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 )
 @EnableTransactionManagement
 @MapperScan("com.polaris.common.mapper")
-public class PolarisApplication {
+public class PolarisMqConsumerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(PolarisApplication.class, args);
+        SpringApplication.run(PolarisMqConsumerApplication.class, args);
     }
 
 }

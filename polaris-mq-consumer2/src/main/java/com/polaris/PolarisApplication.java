@@ -1,4 +1,4 @@
-package com.example.polaris;
+package com.polaris;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;

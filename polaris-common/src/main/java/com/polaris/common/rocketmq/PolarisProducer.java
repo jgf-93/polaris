@@ -20,6 +20,6 @@ public class PolarisProducer {
 
     public <T> SendResult sendSyncMessage(T data) {
         Message message = new GenericMessage(data);
-        return rocketMQTemplate.syncSend("user-topic", message);
+        return rocketMQTemplate.syncSend("user_topic:userMessage", message);
     }
 }

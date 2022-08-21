@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration scan="true" scanPeriod="10 seconds">
+    <jmxConfigurator/>
+    <property name="logDir" value="/polaris/logs/"/>
+    <property name="logLevel" value="INFO"/>
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%date{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <charset class="java.nio.charset.Charset">UTF-8</charset>
+        </encoder>
+    </appender>
+
+
+    <!-- 演示按时间滚动的策略 -->
+    <appender name="defaultLogFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logDir}/polaris.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${logDir}/polaris.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- 保留 30天数据，默认无限-->
+            <maxHistory>2</maxHistory>
+            <totalSizeCap>2GB</totalSizeCap>
+        </rollingPolicy>
+
+        <!-- 日志格式 -->
+        <encoder>
+            <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS}&#60;|&#62;%msg%n</pattern>
+            <charset class="java.nio.charset.Charset">UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- 日志文件的大小 -->
+    <property name="maxFileSize" value="100MB"/>
+
+    <root level="INFO">
+        <appender-ref ref="console"/>
+        <appender-ref ref="defaultLogFile"/>
+    </root>
+    <!--<logger name="com.futurehotel.hos.checkin.biz.dao" level="DEBUG"/>-->
+
+</configuration>
