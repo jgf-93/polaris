@@ -2,7 +2,6 @@ package com.polaris.common.demo.newdesign.singleton;
 
 public class LazySingleton {
     private static LazySingleton lazySingleton;
-
     private LazySingleton() {
 
     }
