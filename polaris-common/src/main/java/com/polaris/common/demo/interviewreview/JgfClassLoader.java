@@ -1,4 +1,4 @@
-package com.polaris.common.demo.fourthreview;
+package com.polaris.common.demo.interviewreview;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
@@ -58,7 +58,7 @@ public class JgfClassLoader extends ClassLoader{
         System.out.println(classLoader.getParent().getParent().getClass().getName());
         try {
             // 使用自定义类加载器
-            Class<?> clazz = classLoader.loadClass("com.polaris.common.demo.fourthreview.JgfClassLoader");
+            Class<?> clazz = classLoader.loadClass("com.polaris.common.demo.interviewreview.JgfClassLoader");
             System.out.println("Class loaded: " + clazz.getClassLoader().getClass().getName());
         } catch (ClassNotFoundException e) {
             System.out.println("Class not found");

@@ -1,4 +1,4 @@
-package com.polaris.common.demo.fourthreview;
+package com.polaris.common.demo.interviewreview;
 
 public class ThreadWait {
     T t = new T();

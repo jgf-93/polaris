@@ -1,4 +1,4 @@
-package com.polaris.common.demo.fourthreview;
+package com.polaris.common.demo.interviewreview;
 
 import com.alibaba.fastjson.JSON;
 import lombok.Data;
