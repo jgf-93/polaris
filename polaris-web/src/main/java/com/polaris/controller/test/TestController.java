@@ -1,11 +1,11 @@
 package com.polaris.controller.test;
 
-import com.mysql.jdbc.StringUtils;
 import com.polaris.common.entity.User;
 import com.polaris.common.re.BaseResponse;
 import com.polaris.common.rocketmq.PolarisProducer;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,7 +30,7 @@ public class TestController {
     @RequestMapping("rocketmq/produce")
     @ResponseBody
     public BaseResponse Login(String messageType) {
-        if (StringUtils.isNullOrEmpty(messageType)) {
+        if (StringUtils.isEmpty(messageType)) {
             return BaseResponse.buildErrorResponse("参数异常");
         }
         for (int i = 0; i < 100; i++) {
