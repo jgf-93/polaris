@@ -102,7 +102,7 @@
             <dependency>
                 <groupId>org.apache.zookeeper</groupId>
                 <artifactId>zookeeper</artifactId>
-                <version>3.7.2</version>
+                <version>3.8.4</version>
                 <!--排除这个slf4j-log4j12-->
                 <exclusions>
                     <exclusion>
